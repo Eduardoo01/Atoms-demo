@@ -37,7 +37,7 @@ import { Component } from '@angular/core';
           @for (item of categoriesIdMap; track $index) {
           <li
             (click)="changeCategory(item.id)"
-            [class.active-category]="selectedCategory === item.id"
+            [class.active-category]="selectedCategory.id === item.id"
             [id]="item.id"
             class="font-bold cursor-pointer"
           >
@@ -48,7 +48,7 @@ import { Component } from '@angular/core';
       </div>
       <div class="py-6 px-4 bg-gray lg:flex lg:items-center lg:px-10">
         <div class="flex gap-3 mb-3 lg:mb-0">
-          <h1 class="text-[28px] font-bold max">Tutti i temi</h1>
+          <h1 class="text-[28px] font-bold max">{{ selectedCategory.text }}</h1>
           <img src="chevron.svg" class="w-4 lg:hidden" alt="" />
         </div>
         <div class="flex flex-wrap gap-2 mb-3 lg:mb-0 lg:gap-4 lg:ml-auto ">
@@ -58,7 +58,8 @@ import { Component } from '@angular/core';
           <button
             (click)="changeCategory(item.id)"
             [id]="item.id"
-            class="basic-button bg-white"
+            class="basic-button"
+            [style]="{ 'background-color': item.backgroundColor }"
           >
             {{ item.text }}
           </button>
@@ -85,44 +86,65 @@ import { Component } from '@angular/core';
   `,
 })
 export class TopMenuComponent {
-  categoriesIdMap: Array<{ id: string; text: string }> = [
+  categoriesIdMap: Array<{
+    id: string;
+    text: string;
+    backgroundColor: string;
+  }> = [
     {
       id: 'all',
       text: 'Tutti i temi',
+      backgroundColor: 'white',
     },
     {
       id: 'environment',
       text: 'Ambiente',
+      backgroundColor: '#E2F1E8',
     },
     {
       id: 'economics',
       text: 'Economia',
+      backgroundColor: 'white',
     },
     {
       id: 'world',
       text: 'Mondo',
+      backgroundColor: '#F1DADA',
     },
     {
       id: 'nonprofit',
       text: 'Non profit',
+      backgroundColor: 'white',
     },
     {
       id: 'politics',
       text: 'Politica',
+      backgroundColor: '#F1F1E2',
     },
     {
       id: 'society',
       text: 'Società',
+      backgroundColor: 'white',
     },
     {
       id: 'welfare',
       text: 'Welfare',
+      backgroundColor: 'white',
     },
   ];
-  selectedCategory: string = 'all';
+  selectedCategory: {
+    id: string;
+    text: string;
+    backgroundColor: string;
+  } = {
+    id: 'all',
+    text: 'Tutti i temi',
+    backgroundColor: 'white',
+  };
 
   changeCategory(id: string) {
     if (!id || id === '') return;
-    this.selectedCategory = id;
+    const choosedCategory = this.categoriesIdMap.find((cat) => cat.id === id);
+    if (choosedCategory) this.selectedCategory = choosedCategory;
   }
 }
