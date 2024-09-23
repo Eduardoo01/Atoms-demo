@@ -42,6 +42,7 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         publishDate="14 Luglio 2022"
         style="grid-area: 2 / 1 / 4 / 4;"
         writingInfoFlexLayout="lg:flex-col lg:items-start"
+        class="hidden lg:block"
       >
         <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
@@ -58,6 +59,7 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         publishDate="14 Luglio 2022"
         style="grid-area: 2 / 4 / 3 / 6;"
         writingInfoFlexLayout="lg:flex-col lg:items-start"
+        class="hidden lg:block"
       >
         <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
@@ -74,6 +76,7 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         publishDate="14 Luglio 2022"
         style="grid-area: 3 / 4 / 4 / 6"
         writingInfoFlexLayout="lg:flex-col lg:items-start"
+        class="hidden lg:block"
       >
         <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
