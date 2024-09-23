@@ -41,7 +41,9 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         authorFullName="Ugo Lombi"
         publishDate="14 Luglio 2022"
         style="grid-area: 2 / 1 / 4 / 4;"
+        writingInfoFlexLayout="lg:flex-col lg:items-start"
       >
+        <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
       <app-article-preview
         backgroundImagePath="copertine/sample-first-article.jpg"
@@ -55,7 +57,9 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         authorFullName="Diletta Grella"
         publishDate="14 Luglio 2022"
         style="grid-area: 2 / 4 / 3 / 6;"
+        writingInfoFlexLayout="lg:flex-col lg:items-start"
       >
+        <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
       <app-article-preview
         backgroundImagePath="copertine/sample-first-article.jpg"
@@ -69,7 +73,9 @@ import { ArticlePreviewComponent } from './components/article-preview/article-pr
         authorFullName="Anna Spena"
         publishDate="14 Luglio 2022"
         style="grid-area: 3 / 4 / 4 / 6"
+        writingInfoFlexLayout="lg:flex-col lg:items-start"
       >
+        <img class="w-5 h-5" src="arrow-right.svg" alt="" />
       </app-article-preview>
     </div>`,
 })

@@ -18,7 +18,7 @@ import { Component } from '@angular/core';
         <span class="p-2 cursor-pointer">Abbonati</span>
         <div
           id="profile"
-          class="hidden items-center gap-2 lg:flex ml-auto mr-10"
+          class="hidden items-center gap-2 lg:flex ml-auto mr-10 cursor-pointer"
         >
           <img src="user.svg" alt="" class="w-4" />
           <p>Accedi</p>

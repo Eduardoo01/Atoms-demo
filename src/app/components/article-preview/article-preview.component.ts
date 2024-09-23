@@ -15,7 +15,7 @@ type ArticleImageSizeType = 'full' | 'thumb' | 'none';
       }}"
       style="background-image: url({{
         backgroundImagePath
-      }}); box-shadow: inset 0 0 0 2000px #00000036;"
+      }}); box-shadow: inset 0 0 0 2000px #00000066;"
     >
       <div class="flex flex-col px-4 items-start gap-4 lg:gap-6 lg:px-10">
         <span
@@ -31,7 +31,11 @@ type ArticleImageSizeType = 'full' | 'thumb' | 'none';
         >
           {{ articleTitle }}
         </h2>
-        <div class="mb-6 flex gap-4 items-center lg:mb-11">
+        <div
+          class="mb-6 flex {{
+            writingInfoFlexLayout
+          }} gap-4 items-center lg:mb-11"
+        >
           <img
             src="{{ writerPicturePath }}"
             alt="Writer profile picture"
@@ -41,11 +45,12 @@ type ArticleImageSizeType = 'full' | 'thumb' | 'none';
             <span class="text-sm leading-6">Di {{ authorFullName }}</span>
             <span class="text-[10px] leading-4">{{ publishDate }}</span>
           </div>
+          <ng-content></ng-content>
         </div>
       </div>
     </div>
     } @else if(imageSizeType === "thumb"){
-    <!-- todo articolo con immagine più piccola -->
+    <!-- todo articolo con immagine più piccola, probabilmente serve un componente a parte (così come per le frasi del giorno, i podcast ecc) -->
     }
   </div>`,
   styles: ``,
@@ -64,4 +69,5 @@ export class ArticlePreviewComponent {
   //passo le classnames di tailwind complete, dato che non riesce ad interpolare le proprietà del componente angular in fase di build
   @Input() articleHeightDesktop: string = 'lg:h-full';
   @Input() articleHeightMobile: string = 'h-80';
+  @Input() writingInfoFlexLayout: string = '';
 }
