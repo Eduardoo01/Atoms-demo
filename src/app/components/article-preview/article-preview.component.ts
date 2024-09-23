@@ -6,11 +6,13 @@ type ArticleImageSizeType = 'full' | 'thumb' | 'none';
   selector: 'app-article-preview',
   standalone: true,
   imports: [],
-  template: `<div>
+  template: `<div class="lg:h-full">
     @if(imageSizeType !== "none" && imageSizeType === "full"){
 
     <div
-      class="outline h-80 bg-cover flex items-end lg:h-[506px]"
+      class="outline  bg-cover flex items-end {{ articleHeightMobile }}  {{
+        articleHeightDesktop
+      }}"
       style="background-image: url({{
         backgroundImagePath
       }}); box-shadow: inset 0 0 0 2000px #00000036;"
@@ -42,7 +44,9 @@ type ArticleImageSizeType = 'full' | 'thumb' | 'none';
         </div>
       </div>
     </div>
-    } @else if(imageSizeType === "thumb"){ }
+    } @else if(imageSizeType === "thumb"){
+    <!-- todo articolo con immagine più piccola -->
+    }
   </div>`,
   styles: ``,
 })
@@ -57,4 +61,7 @@ export class ArticlePreviewComponent {
     label: '',
   };
   @Input() writerPicturePath: string = '';
+  //passo le classnames di tailwind complete, dato che non riesce ad interpolare le proprietà del componente angular in fase di build
+  @Input() articleHeightDesktop: string = 'lg:h-full';
+  @Input() articleHeightMobile: string = 'h-80';
 }

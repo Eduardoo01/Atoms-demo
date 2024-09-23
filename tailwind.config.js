@@ -16,8 +16,6 @@ module.exports = {
   },
   plugins: [function ({ addComponents }) {
     addComponents({
-
-
       '.basic-button': {
         padding: "12px 16px",
         "font-size": "10px",

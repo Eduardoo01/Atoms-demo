@@ -1,11 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-top-menu',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   template: `
-    <nav id="main-menu-wrapper" class="font-normal sticky top-0 left-0 w-full">
+    <nav
+      id="main-menu-wrapper"
+      class="font-normal sticky top-0 left-0 w-full bg-white"
+    >
       <div
         class="flex justify-evenly flex-row border-black border-y lg:border-t-0 font-normal text-sm lg:py-3 "
       >
@@ -20,13 +24,23 @@ import { Component } from '@angular/core';
           <p>Accedi</p>
         </div>
       </div>
-      <div class="flex flex-row border-black border-b">
-        <div class="p-5 lg:p-9">
+      <div class="flex flex-row border-black border-b ">
+        <div
+          class="p-5 lg:p-9"
+          [ngClass]="{ hidden: isSearching, 'border-r': !isSearching }"
+        >
           <img src="/hamburger-red.svg" class="w-5 lg:w-6" alt="" />
         </div>
-        <input class="grow border-black  border-l border-r " type="text" />
-        <div class="p-5 lg:p-9">
-          <img src="/search-red.svg" class="w-5 lg:w-6" alt="" />
+        <input class="grow border-black border-r " type="text" />
+        <div
+          class="p-5 lg:p-9 cursor-pointer"
+          (click)="isSearching = !isSearching"
+        >
+          <img
+            [src]="isSearching ? 'close.svg' : 'search-red.svg'"
+            class="w-5 lg:w-6"
+            alt=""
+          />
         </div>
       </div>
       <div
@@ -85,7 +99,10 @@ import { Component } from '@angular/core';
   }
   `,
 })
+
+//si potrebbero usare i Signals per migliorare la performance
 export class TopMenuComponent {
+  //oggetto con le varie categorie e un colore di sfondo per i bottoni
   categoriesIdMap: Array<{
     id: string;
     text: string;
@@ -142,9 +159,11 @@ export class TopMenuComponent {
     backgroundColor: 'white',
   };
 
+  isSearching: boolean = false;
+  //cambio categoria al click dei vari pulsanti che aggiorna la UI
   changeCategory(id: string) {
     if (!id || id === '') return;
-    const choosedCategory = this.categoriesIdMap.find((cat) => cat.id === id);
-    if (choosedCategory) this.selectedCategory = choosedCategory;
+    const chosenCategory = this.categoriesIdMap.find((cat) => cat.id === id);
+    if (chosenCategory) this.selectedCategory = chosenCategory;
   }
 }
